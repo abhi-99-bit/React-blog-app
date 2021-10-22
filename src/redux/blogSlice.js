@@ -11,6 +11,7 @@ export const getBlogsAsync = createAsyncThunk('blogs/getBlogsAsyc', async () => 
 
 // ASYNC FUNCTION FOR ADD NEW BLOGS
 export const addBlogsAsync = createAsyncThunk('blogs/addBlogsAsyc', async (payload)=> {
+    console.log('helloworld---------------------------------')
     const response = await fetch('http://localhost:7000/blogs',{
         method: 'POST',
         headers: {
@@ -32,12 +33,11 @@ const blogSlice = createSlice({
         // standard reducer logic, with auto-generated action types per reducer
     },
     extraReducers: (builder) => {
-
-        builder.addCase(getBlogsAsync.fulfilled, (state, action)=> {
+        builder
+        .addCase(getBlogsAsync.fulfilled, (state, action)=> {
             return action.payload.blogs;
-        });
-
-        builder.addCase(addBlogsAsync.fulfilled, (state, action) => {
+        })
+        .addCase(addBlogsAsync.fulfilled, (state, action) => {
             state.push(action.payload.blog);
         });
     }

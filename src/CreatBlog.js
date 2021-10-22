@@ -13,14 +13,14 @@ const CreateBlog = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsLoading(true);
-        const blog = { title, body, author};
-        console.log(blog);
+        // setIsLoading(true);
+        // const blog = { title, body, author};
+        // console.log(blog);
         dispatch(()=> {
-            addBlogsAsync(blog)
+            addBlogsAsync({title: title, body: body, author: author})
         });
-        setIsLoading(false);
-        history.push('/');
+        // setIsLoading(false);
+        // history.push('/');
         // fetch('http://localhost:8000/blogs',{
         //  method: 'post',
         //  headers: {"content-type": "application/json"},
