@@ -1,13 +1,21 @@
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import BlogList from "./BlogList"
-import useFetch from "./useFetch";
+import { getBlogsAsync } from './redux/blogSlice';
+// import useFetch from "./useFetch";
 
 const Home = () => {
+  // const {data:blogs, isLoading, error} = useFetch('http://localhost:8000/blogs')
+  const blogs = useSelector((state) => state.blogs);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBlogsAsync())
+  },[dispatch])
 
-  const {data:blogs, isLoading, error} = useFetch('http://localhost:8000/blogs')
   return (
       <div className="Home">
-        {isLoading && <div>Loading.....</div>}
-        {error && <div>{error}</div>}
+        {/* {isLoading && <div>Loading.....</div>}
+        {error && <div>{error}</div>} */}
         {blogs && <BlogList blogs={blogs} title="All Blogs" />}
       </div>
   );

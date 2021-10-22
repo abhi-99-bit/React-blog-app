@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { addBlogsAsync } from './redux/blogSlice';
 const CreateBlog = () => {
     const[title, setTitle] = useState('');
     const[body, setBody] = useState('');
     const[author, setAuthor] = useState('mario');
     const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch();
     // FOR REDIRECT THE USER AFTER ADDING BLOG
     const history = useHistory();
 
@@ -14,15 +16,20 @@ const CreateBlog = () => {
         setIsLoading(true);
         const blog = { title, body, author};
         console.log(blog);
-        fetch('http://localhost:8000/blogs',{
-         method: 'post',
-         headers: {"content-type": "application/json"},
-         body: JSON.stringify(blog)
-        }).then(() => {
-            console.log('New Blog Added')
-            setIsLoading(false);
-            history.push('/');
-        })
+        dispatch(()=> {
+            addBlogsAsync(blog)
+        });
+        setIsLoading(false);
+        history.push('/');
+        // fetch('http://localhost:8000/blogs',{
+        //  method: 'post',
+        //  headers: {"content-type": "application/json"},
+        //  body: JSON.stringify(blog)
+        // }).then(() => {
+        //     console.log('New Blog Added')
+        //     setIsLoading(false);
+        //     history.push('/');
+        // })
     }
     return ( 
         <div className="create">

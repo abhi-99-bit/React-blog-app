@@ -1,12 +1,6 @@
 {
   "blogs": [
     {
-      "title": "My First Blog",
-      "body": "Why do we use it? \nIt is a long established",
-      "author": "mario",
-      "id": 1
-    },
-    {
       "title": "Opening Party!",
       "body": "Eine After-Work-Party ist eine offene gesellschaftliche (Tanz)-Veranstaltung an Werktagen, die in einigen Diskotheken am frühen Abend angeboten wird. After-Work-Partys wenden sich an die Zielgruppe der jungen Arbeitnehmer und Selbständigen in „modernen“ Branchen wie Beratung, Werbung oder Medien und suggerieren so allen Teilnehmern auch aus anderen Branchen, selbst modern und dynamisch zu sein. Dress-Code der Party-Gänger ist daher in der Regel legere Geschäftskleidung.",
       "author": "yoshi",
@@ -29,6 +23,12 @@
       "body": "Welcome, to the part-3  of react learning",
       "author": "yoshi",
       "id": 7
+    },
+    {
+      "title": "Hello world",
+      "body": "dfdfdsfs",
+      "author": "yoshi",
+      "id": 8
     }
   ]
 }
