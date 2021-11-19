@@ -8,28 +8,19 @@ const CreateBlog = () => {
     const[author, setAuthor] = useState('mario');
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
+    
     // FOR REDIRECT THE USER AFTER ADDING BLOG
     const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // setIsLoading(true);
+        setIsLoading(true);
         // const blog = { title, body, author};
-        // console.log(blog);
-        dispatch(()=> {
+        dispatch(
             addBlogsAsync({title: title, body: body, author: author})
-        });
-        // setIsLoading(false);
-        // history.push('/');
-        // fetch('http://localhost:8000/blogs',{
-        //  method: 'post',
-        //  headers: {"content-type": "application/json"},
-        //  body: JSON.stringify(blog)
-        // }).then(() => {
-        //     console.log('New Blog Added')
-        //     setIsLoading(false);
-        //     history.push('/');
-        // })
+        );
+        setIsLoading(false);
+        history.push('/');
     }
     return ( 
         <div className="create">

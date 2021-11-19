@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import BlogList from "./BlogList"
 import { getBlogsAsync } from './redux/blogSlice';
-// import useFetch from "./useFetch";
+
 
 const Home = () => {
-  // const {data:blogs, isLoading, error} = useFetch('http://localhost:8000/blogs')
   const blogs = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
   useEffect(() => {

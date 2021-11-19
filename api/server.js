@@ -13,11 +13,6 @@ app.use(cors());
 app.use(json());
 
 let blogs = [
-	// {
-	// 	id: nanoid(),
-	// 	title: 'todo 1',
-	// 	completed: true,
-	// },
 	{
 		id: nanoid(),
 		title: 'Learn React',
@@ -39,14 +34,26 @@ let blogs = [
 	  
 ];
 
+// get all blogs 
 app.get('/blogs', (req, res) => res.send(blogs));
 
+// add new blogs
 app.post('/blogs', (req, res) => {
 	const blog = { id: nanoid(), title: req.body.title, body: req.body.body, author: req.body.author};
 	blogs.push(blog);
 	return res.send(blog);
 });
 
+// get blog by id
+app.get('/blogs/:id', (req, res) => {
+	const id = req.params.id;
+	const index = blogs.findIndex((todo) => todo.id === id);
+	const arr = [];
+	arr.push(blogs[index])
+	return res.send(arr);
+});
+
+// edit blog by id
 app.patch('/blogs/:id', (req, res) => {
 	const id = req.params.id;
 	const index = blogs.findIndex((todo) => todo.id === id);
@@ -57,6 +64,7 @@ app.patch('/blogs/:id', (req, res) => {
 	return res.send(blogs[index]);
 });
 
+// delete blog by id
 app.delete('/blogs/:id', (req, res) => {
 	const id = req.params.id;
 	const index = blogs.findIndex((todo) => todo.id === id);
